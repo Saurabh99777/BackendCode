@@ -18,6 +18,7 @@ import com.abm.examedge.service.StudentService;
 @RestController
 @CrossOrigin 
 public class StudentController {
+	
 		@Autowired
 		private StudentService studentService;
 		

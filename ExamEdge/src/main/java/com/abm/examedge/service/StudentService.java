@@ -33,8 +33,8 @@ public class StudentService {
 		
 	}
 	
-	public String addstudent(Student studentDetails) {
-		studentRepo.save(studentDetails);
+	public String addstudent(Student student) {
+		studentRepo.save(student);
 		return "added successfully";
 		
 	}
