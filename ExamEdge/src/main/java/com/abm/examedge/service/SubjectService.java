@@ -1,6 +1,10 @@
 package com.abm.examedge.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.abm.examedge.entity.Subject;
@@ -21,4 +25,23 @@ public class SubjectService {
 	public void deletesubject(int id) {
 		subrepo.deleteById(id);
 	}
+	
+	public ResponseEntity<Subject> SearchStudent(int id) {
+		Optional<Subject> subjectOptional = subrepo.findById(id);
+		if (subjectOptional.isPresent()) {
+            return ResponseEntity.ok(subjectOptional.get()); 
+        } else {
+            // Return a 404 Not Found response if the entity is not found
+            return ResponseEntity.notFound().build();
+        }
+	}
+	
+	
+	public List<Subject> searchAll(){
+		List<Subject> list = subrepo.findAll();
+		return list;
+	}
+	
+	
+	
 }

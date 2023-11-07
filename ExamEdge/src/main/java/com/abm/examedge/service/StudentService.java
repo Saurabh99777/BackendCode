@@ -24,4 +24,19 @@ public class StudentService {
 			throw new StudentServiceException("Invalid Email/Password!");
 	}
 	
+	public Optional<Student> editDetails(int id) {
+		return studentRepo.findById(id);	
+	}
+	
+	public void updaterecord(Student stu) {
+		studentRepo.save(stu);
+		
+	}
+	
+	public String addstudent(Student studentDetails) {
+		studentRepo.save(studentDetails);
+		return "added successfully";
+		
+	}
+	
 }
