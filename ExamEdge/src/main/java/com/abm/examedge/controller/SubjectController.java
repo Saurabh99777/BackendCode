@@ -15,6 +15,7 @@ import com.abm.examedge.entity.Subject;
 import com.abm.examedge.exception.SubjectNotFoundException;
 import com.abm.examedge.service.SubjectService;
 
+
 @RestController
 public class SubjectController {
 
