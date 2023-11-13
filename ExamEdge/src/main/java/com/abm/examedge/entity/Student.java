@@ -3,6 +3,7 @@ package com.abm.examedge.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,6 +13,7 @@ public class Student {
 	
 	@Id
 	@Column(name = "student_id") 
+	@GeneratedValue
 	private int id;
 
 	@Column(name = "student_name") 

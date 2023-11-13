@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,6 +17,7 @@ public class Exam {
 
 	@Id
 	@Column(name="ex_id")
+	@GeneratedValue
 	private int id;
 	
 	@ManyToOne

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abm.examedge.dto.Login;
+import com.abm.examedge.dto.Registrationdto;
 import com.abm.examedge.entity.Student;
 import com.abm.examedge.exception.StudentServiceException;
 import com.abm.examedge.service.StudentService;
@@ -21,6 +22,26 @@ public class StudentController {
 	
 		@Autowired
 		private StudentService studentService;
+		
+		
+		
+		//localhost:9900/addstudent   url for adding student details
+		@PostMapping("/addstudent")
+		public Registrationdto	 add(@RequestBody Student stu) {
+			try {
+				int id = studentService.addstudent(stu);
+				Registrationdto rd = new Registrationdto();
+				rd.setStatus(true);
+				rd.setMessagIfAny("Student registered");
+				return rd;
+			}catch(StudentServiceException e) {
+				Registrationdto rd = new Registrationdto();
+				rd.setStatus(false);
+				rd.setMessagIfAny(e.getMessage());
+				return rd;
+			}
+			
+		}
 		
 		
 		@PostMapping("/student/login")
@@ -47,25 +68,20 @@ public class StudentController {
 	}
 
 		// http://localhost:8080/studentdetails?id=3   url for fetching student details
-		@GetMapping("/studentdetails")
+		@GetMapping("/student/detail")
 		public Optional<Student> findStudent(@RequestParam int id){
 			return studentService.editDetails(id);
 			 
 		}
 		
-		@PostMapping("/updaterecord/{id}")
+		@PostMapping("student/update/record/{id}")
 		public String update(@RequestBody Student stu) {
 			studentService.updaterecord(stu);
 			return "Record updated";
 		}
 		
 		
-		//localhost:9900/addstudent   url for adding student details
-		@PostMapping("/addstudent")
-		public String add(@RequestBody Student stu) {
-			studentService.addstudent(stu);
-			return "added successfully";
-		}
+	
 		
 		
 }
