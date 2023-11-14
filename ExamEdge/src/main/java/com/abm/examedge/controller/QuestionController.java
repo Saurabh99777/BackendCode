@@ -25,6 +25,7 @@ public class QuestionController {
 	@PostMapping("/addquestion")
 	public String add(@RequestBody Question que) {
 		questionser.addquestion(que);
+		
 		return "added question successfully";
 		
 	}

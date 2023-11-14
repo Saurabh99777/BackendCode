@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.abm.examedge.entity.Question;
+import com.abm.examedge.entity.Subject;
 import com.abm.examedge.repository.QuestionRepository;
 
 
@@ -23,7 +24,7 @@ public class QuestionService {
 		
 	}
 	public void addquestion(Question question) {
-		
+		question.setSubject(Subject.get););
 		
 		questionRepo.save(question);
 	}
