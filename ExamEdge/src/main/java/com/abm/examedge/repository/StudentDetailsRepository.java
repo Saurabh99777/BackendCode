@@ -13,5 +13,8 @@ public interface StudentDetailsRepository extends JpaRepository<Student, Integer
 	
 	@Query("select count(s) from Student s where s.emailId =?1 ")
 	public Long findStudentExists(String emailId);
+	
+	@Query("select s from Student s where s.emailId = ?1")
+	public Student findStudentByEmailId(String emailId);
 		
 }

@@ -23,6 +23,8 @@ public class QuestionService {
 		
 	}
 	public void addquestion(Question question) {
+		
+		
 		questionRepo.save(question);
 	}
 	 

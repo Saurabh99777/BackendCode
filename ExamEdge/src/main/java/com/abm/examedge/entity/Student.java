@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +29,22 @@ public class Student {
 	@Column(name = "phone_no") 
 	private Long phoneNo;
 	
+	@Lob
+    @Column(name = "imagedata", length = 1000)
+    private String imageUrl;
+	
+	
+	
+
+	
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 
 	public int getId() {
 		return id;
