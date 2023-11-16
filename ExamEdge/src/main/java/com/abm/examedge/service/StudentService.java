@@ -29,7 +29,7 @@ public class StudentService {
 //    @Value("${file.base-url}")
 //    private String baseUrl;
 	
-	public int addStudent(Student student, MultipartFile file) throws IOException {
+	public int addStudent(Student student)  {
 	    Long count = studentRepo.findStudentExists(student.getEmailId());
 	    if (count == 0) {
 	        // Save the image to a file or a cloud storage service

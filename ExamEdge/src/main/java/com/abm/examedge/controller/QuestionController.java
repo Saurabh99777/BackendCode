@@ -35,10 +35,10 @@ public class QuestionController {
         return "Added question successfully";
     }
 	
-	
+	//fetching questions by id and level 
 	@GetMapping("/fetchquestions")
-	public List<Question> fetchques(@RequestParam int id,String level) {
-		List<Question>list= questionser.questionfetch(id, level);
+	public List<Question> fetchques(@RequestParam int id) {
+		List<Question>list= questionser.questionfetch(id);
 		return list;
 	}
 	
@@ -47,6 +47,13 @@ public class QuestionController {
 		
 		return questionser.fetchquestionbyid(questionId);
 		
+		
+	}
+	
+	@GetMapping("/fetchallquestion")
+	public List<Question> fetchquestion(){
+		List<Question>list =questionser.fetchAllQuestion();
+		return list;
 		
 	}
 	

@@ -28,14 +28,12 @@ public class QuestionService {
 	    }
 	 
 	 
-	 
-	public List<Question> questionfetch( int id,String level){
-		List<Question>list= questionRepo.questionfecth(id, level);
-		if(list.size()>10) {
-			return list.subList(0, 9);
-		}
+	 //fetching questions by id and level 
+	public List<Question> questionfetch( int id){
+		List<Question>list= questionRepo.questionfecth(id);
 		return list;
-		}
+	}
+	
 	
 	public ResponseEntity<Question> fetchquestionbyid( int questionId) {
 		Optional<Question>list=questionRepo.findById(questionId);
@@ -43,6 +41,10 @@ public class QuestionService {
 		return ResponseEntity.of(list);
 	}
 	
-	
+	//fetch all questions 
+	public List<Question>fetchAllQuestion(){
+		List<Question> list= questionRepo.findAll();
+		return list;
+	}
 	
 }
