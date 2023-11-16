@@ -1,11 +1,17 @@
 	package com.abm.examedge.entity;
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "subject_table") 
@@ -17,8 +23,20 @@ public class Subject {
 
     @Column(name = "subject_name") 
     private String name;
+    
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "subject")
+//    private List<Question> question;
+//    
+//	public List<Question> getQuestions() {
+//		return question;
+//	}	
+//
+//	public void setQuestions(List<Question> question) {
+//		this.question = question;
+//	}
 
-    // Getters and setters
+	
     public int getId() {
         return id;
     }

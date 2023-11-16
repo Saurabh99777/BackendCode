@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
+import com.abm.examedge.dto.SubjectDto;
 import com.abm.examedge.entity.Question;
+import com.abm.examedge.entity.Subject;
 import com.abm.examedge.service.QuestionService;
 
 @RestController
@@ -23,12 +26,16 @@ public class QuestionController {
 	private QuestionService questionser;
 	
 	@PostMapping("/addquestion")
-	public String add(@RequestBody Question que) {
-		questionser.addquestion(que);
-		
-		return "added question successfully";
-		
-	}
+    public String add(@RequestBody Question question) {
+		SubjectDto subject = new SubjectDto();
+		Subject sub = new Subject();
+//		question.setSubject(subject.getId(question));
+//		int s = subject.setId(sub.getId());
+		questionser.addQuestion(question);
+        return "Added question successfully";
+    }
+	
+	
 	@GetMapping("/fetchquestions")
 	public List<Question> fetchques(@RequestParam int id,String level) {
 		List<Question>list= questionser.questionfetch(id, level);

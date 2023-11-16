@@ -1,11 +1,13 @@
 package com.abm.examedge.entity;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="question_table")
@@ -27,6 +29,7 @@ public class Question {
 	private String option4;
 	private String answer; 
 	private String level;
+	
 	public int getQuestionId() {
 		return questionId;
 	}
