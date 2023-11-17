@@ -66,4 +66,12 @@ public class QuestionController {
 		
 	}
 	
+	@PostMapping("/deletequestion/{id}")
+	public String deletequestid(@PathVariable int id) {
+		
+	 questionser.deleteQuestion(id);
+	 return "Deleted successfully";
+		
+	}
+	
 }
