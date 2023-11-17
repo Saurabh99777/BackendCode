@@ -1,6 +1,7 @@
 package com.abm.examedge.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,11 +36,35 @@ public class QuestionController {
         return "Added question successfully";
     }
 	
-	@GetMapping("/fetchquestions")
-	public List<Question> fetchques(@RequestParam int id,String level) {
-		List<Question>list= questionser.questionfetch(id, level);
-		return list;
+//	@GetMapping("/fetchquestions")
+//	public List<Question> fetchques(@RequestParam int id,String level) {
+//		List<Question>list= questionser.questionfetch(id, level);
+//		return list;
+//	}
+	
+
+	
+	@GetMapping("/fetchquesbyid/{id}")
+	public ResponseEntity<Question> fetchbyid(@PathVariable int questionId) {
+		
+		return questionser.fetchquestionbyid(questionId);
+		
+		
 	}
 	
+	@GetMapping("/fetchallquestion")
+	public List<Question> fetchquestion(){
+		List<Question>list =questionser.fetchAllQuestion();
+		return list;
+		
+	}
+
+	
+	@GetMapping("/fetchquestionsbysubid/{id}")
+	public ResponseEntity<Question> fetchQuestionSubId(@PathVariable int id){
+		ResponseEntity<Question>list =questionser.fetchquestionbyid(id);
+		return list;
+		
+	}
 	
 }
