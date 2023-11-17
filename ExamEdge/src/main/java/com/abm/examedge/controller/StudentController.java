@@ -33,14 +33,14 @@ public class StudentController {
 
 	//localhost:9900/addstudent   url for adding student details
 	@PostMapping("/addstudent")
-	public Registrationdto add(@RequestBody Student stu) {
+	public Registrationdto add(@RequestParam("image") MultipartFile file, @ModelAttribute Student stu) {
 	    try {
-	        int id = studentService.addStudent(stu);
+	        int id = studentService.addStudent(stu, file);
 	        Registrationdto rd = new Registrationdto();
 	        rd.setStatus(true);
 	        rd.setMessagIfAny("Student registered");
 	        return rd;
-	    } catch (StudentServiceException e) {
+	    } catch (StudentServiceException | IOException e) {
 	        Registrationdto rd = new Registrationdto();
 	        rd.setStatus(false);
 	        rd.setMessagIfAny(e.getMessage());

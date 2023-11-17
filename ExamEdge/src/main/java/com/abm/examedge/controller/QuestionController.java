@@ -35,26 +35,11 @@ public class QuestionController {
         return "Added question successfully";
     }
 	
-	//fetching questions by id and level 
 	@GetMapping("/fetchquestions")
-	public List<Question> fetchques(@RequestParam int id) {
-		List<Question>list= questionser.questionfetch(id);
+	public List<Question> fetchques(@RequestParam int id,String level) {
+		List<Question>list= questionser.questionfetch(id, level);
 		return list;
 	}
 	
-	@GetMapping("/fetchquesbyid/{id}")
-	public ResponseEntity<Question> fetchbyid(@PathVariable int questionId) {
-		
-		return questionser.fetchquestionbyid(questionId);
-		
-		
-	}
-	
-	@GetMapping("/fetchallquestion")
-	public List<Question> fetchquestion(){
-		List<Question>list =questionser.fetchAllQuestion();
-		return list;
-		
-	}
 	
 }

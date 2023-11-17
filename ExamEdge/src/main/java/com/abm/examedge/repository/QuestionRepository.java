@@ -12,13 +12,6 @@ import com.abm.examedge.entity.Question;
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
 		
 	
-	@Query(value = "SELECT q FROM Question q WHERE q.subject.id= ?1 AND q.level = 'Basic'")
-	 public List<Question> questionfecth(int id);
-	
-	//@Query("SELECT q FROM Question q WHERE q.subject.id = :id AND q.level = :level")
-	
-	
-//	@Query("SELECT q FROM Question q WHERE q.subject.id = ?1 and q.level='?2'")
-//	public List<Question> questionFetch(@Param("subjectId") int subjectId);
-
+	@Query(value = "SELECT q FROM Question q WHERE q.subject.id <> ?1 AND q.level = ?2 ORDER BY RAND() ")
+	 public List<Question> questionfecth(@Param("subId")int id,@Param("level") String level);
 }
