@@ -33,4 +33,9 @@ public class ResultService {
 		
 	}
 	
+	public Result saveresult(Result result) {
+		return resultRepo.save(result);
+	}
+	
+	
 }

@@ -2,11 +2,11 @@ package com.abm.examedge.repository;
 
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+
 
 import com.abm.examedge.entity.Question;
 
@@ -27,6 +27,9 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
 //	public List<Question> questionFetch(@Param("subjectId") int subjectId);
 
 	@Query("SELECT s FROM Question s WHERE s.subject.id=?1")
-	public Optional<Question> fetchQuestionBySubid(int id);
+	public List<Question> fetchQuestionBySubid(int id);
+	
+	@Query("select q from Question q")
+    List<Question> fetchanswer();
 
 }

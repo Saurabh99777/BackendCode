@@ -26,8 +26,17 @@ public class Result {
 	private Student student;
 	
 	private int mark;
+	private String level;
 	
 	
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
 
 	public int getId() {
 		return id;
