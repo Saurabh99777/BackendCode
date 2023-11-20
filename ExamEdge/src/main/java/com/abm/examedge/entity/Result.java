@@ -19,6 +19,10 @@ public class Result {
 	@Column(name="result_id")
 	private int id;
 	
+	
+	
+	
+
 	@ManyToOne
 	@JoinColumn(name="subject_id")
 	private Subject subject;
@@ -32,13 +36,7 @@ public class Result {
 	
 	
 
-	public String getLevel() {
-		return level;
-	}
-
-	public void setLevel(String level) {
-		this.level = level;
-	}
+	
 
 	public int getId() {
 		return id;
@@ -74,8 +72,13 @@ public class Result {
 	
 	
 	
-	
-	
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
 	
 	
 	

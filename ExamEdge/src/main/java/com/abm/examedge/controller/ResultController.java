@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
+import com.abm.examedge.dto.StudentResultDto;
+
+import com.abm.examedge.dto.QuestionAnswerDto;
+
+import com.abm.examedge.dto.QuestionAnswerDto;
 import com.abm.examedge.dto.QuestionAnswerDto;
 import com.abm.examedge.entity.Result;
 import com.abm.examedge.exception.UserException;
@@ -35,6 +41,7 @@ public class ResultController {
 
 
 
+
 	}
 
 	@PostMapping("/result")
@@ -47,4 +54,21 @@ public class ResultController {
 	    reservice.saveresult(result);
 	    return "Result added Successfully";
 	}
-}
+
+	
+	
+	@GetMapping("/studentresult")
+	public List<Result> fetchResultbyIdandLevel(int StudentId,int subid,String level,String mark){
+		List<Result> list= reservice.resultFetchByIdandLevel(StudentId,subid,level, mark);
+		return list;
+		
+
+
+
+
+	}
+
+	
+
+	}
+
