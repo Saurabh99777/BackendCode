@@ -37,11 +37,14 @@ public class ResultController {
 
 	}
 
-//	@PostMapping("/result")
-//	public QuestionAnswerDto result(@RequestBody Result result) {
-//		reservice.saveresult(result);
-//		QuestionAnswerDto qadto = new QuestionAnswerDto();
-//		qadto.getLevel(result.setLevel("Basic"));
-//		return qadto; 
-//	}
+	@PostMapping("/result")
+	public String result(@RequestBody QuestionAnswerDto qadto) {
+		Result result = new Result();
+		result.setMark(qadto.getMark());
+		result.setLevel(qadto.getLevel());
+		result.setStudent(qadto.getStudent());
+		result.setSubject(qadto.getSubject());
+	    reservice.saveresult(result);
+	    return "Result added Successfully";
+	}
 }

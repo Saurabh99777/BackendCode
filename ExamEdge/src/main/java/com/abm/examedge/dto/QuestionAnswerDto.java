@@ -4,16 +4,24 @@ import com.abm.examedge.entity.Student;
 import com.abm.examedge.entity.Subject;
 
 public class QuestionAnswerDto {
-	private int score;
+	private int mark;
 	private int answer;
 	private String level;
-	private Student studet;
 	private Subject subject;
-	public int getScore() {
-		return score;
+	private Student student;
+	
+	
+	public Student getStudent() {
+		return student;
 	}
-	public void setScore(int score) {
-		this.score = score;
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+	public int getMark() {
+		return mark;
+	}
+	public void setMark(int mark) {
+		this.mark = mark;
 	}
 	public int getAnswer() {
 		return answer;
@@ -27,12 +35,7 @@ public class QuestionAnswerDto {
 	public void setLevel(String level) {
 		this.level = level;
 	}
-	public Student getStudet() {
-		return studet;
-	}
-	public void setStudet(Student studet) {
-		this.studet = studet;
-	}
+
 	public Subject getSubject() {
 		return subject;
 	}
