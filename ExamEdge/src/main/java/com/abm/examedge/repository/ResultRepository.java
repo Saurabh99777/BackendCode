@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.abm.examedge.dto.StudentResultDto;
 import com.abm.examedge.entity.Result;
 
 public interface ResultRepository extends JpaRepository<Result, Integer>{
@@ -17,4 +18,10 @@ public interface ResultRepository extends JpaRepository<Result, Integer>{
 	@Query(value = "SELECT r FROM Result r WHERE r.subject.id = ?1")
 	
 	public List<Result> resultfetch(@Param("id")int id);
+	
+	
+	@Query("")
+	public  List<Result> ftechresultbyidandlevel(int id);
+		
+	
 }

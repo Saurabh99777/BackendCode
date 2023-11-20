@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.abm.examedge.dto.StudentResultDto;
 import com.abm.examedge.entity.Result;
 import com.abm.examedge.exception.UserException;
 import com.abm.examedge.repository.ResultRepository;
@@ -32,5 +33,13 @@ public class ResultService {
 		 throw new UserException("Data not available for specific id");
 		
 	}
+	
+	public List<Result> resultFetchByIdandLevel(int StudentId,int subid,String level,String mark){
+		List<Result> list =resultRepo.ftechresultbyidandlevel(StudentId, subid, level, mark);
+		return list;
+		
+	}
+	
+	
 	
 }
