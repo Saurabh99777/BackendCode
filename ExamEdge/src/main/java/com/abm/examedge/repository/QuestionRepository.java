@@ -2,17 +2,21 @@ package com.abm.examedge.repository;
 
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+
 
 import com.abm.examedge.entity.Question;
 
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
 		
 	
+
+//	@Query(value = "SELECT q FROM Question q WHERE q.subject.id <> ?1 AND q.level = ?2 ORDER BY RAND() ")
+//	 public List<Question> questionfecth(@Param("subId")int id,@Param("level") String level);
+
 	@Query(value = "SELECT q FROM Question q WHERE q.subject.id= ?1 AND q.level = 'Basic'")
 	 public List<Question> questionfecth(int id);
 	
@@ -24,4 +28,8 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
 
 	@Query("SELECT s FROM Question s WHERE s.subject.id=?1")
 	public List<Question> fetchQuestionBySubid(int id);
+	
+	@Query("select q from Question q")
+    List<Question> fetchanswer();
+
 }

@@ -21,7 +21,7 @@ public interface ResultRepository extends JpaRepository<Result, Integer>{
 	
 	
 	@Query("")
-	public  List<Result> ftechresultbyidandlevel(int id);
+	public  List<Result> ftechresultbyidandlevel(int StudentId,int subid,String level,String mark);
 		
 	
 }

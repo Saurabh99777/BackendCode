@@ -57,7 +57,7 @@ public class StudentController {
 			Student studentDetails= studentService.login(student.getEmailId() , student.getPassword());
 			Login status = new Login();
 			status.setStatus(true);
-			status.setId(student.getId());
+			status.setId(student.getSid());
 			status.setName(student.getName());
 			status.setEmailId(student.getEmailId());
 			return status;
@@ -90,6 +90,7 @@ public class StudentController {
 
 
 
+	
 
 
 }

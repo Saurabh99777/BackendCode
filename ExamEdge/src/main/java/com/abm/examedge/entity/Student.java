@@ -6,7 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "student_details") 
@@ -15,7 +18,7 @@ public class Student {
 	@Id
 	@Column(name = "student_id") 
 	@GeneratedValue
-	private int id;
+	private int sid;
 
 	@Column(name = "student_name") 
 	private String name;
@@ -33,10 +36,20 @@ public class Student {
     @Column(name = "imagedata", length = 1000)
     private String imageUrl;
 	
-	
-	
-
-	
+//	@JsonIgnore
+//	@OneToMany
+//	private Result result;
+//
+//	
+//	
+//
+//	public Result getResult() {
+//		return result;
+//	}
+//
+//	public void setResult(Result result) {
+//		this.result = result;
+//	}
 
 	public String getImageUrl() {
 		return imageUrl;
@@ -46,12 +59,14 @@ public class Student {
 		this.imageUrl = imageUrl;
 	}
 
-	public int getId() {
-		return id;
+	
+
+	public int getSid() {
+		return sid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setSid(int sid) {
+		this.sid = sid;
 	}
 
 	public String getName() {
@@ -60,6 +75,7 @@ public class Student {
 
 	public void setName(String name) {
 		this.name = name;
+		
 	}
 
 	public String getEmailId() {

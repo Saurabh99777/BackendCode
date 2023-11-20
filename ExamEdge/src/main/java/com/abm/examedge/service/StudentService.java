@@ -29,7 +29,7 @@ public class StudentService {
 //    @Value("${file.base-url}")
 //    private String baseUrl;
 	
-	public int addStudent(Student student)  {
+	public int addStudent(Student student) {
 	    Long count = studentRepo.findStudentExists(student.getEmailId());
 	    if (count == 0) {
 	        // Save the image to a file or a cloud storage service
@@ -41,7 +41,7 @@ public class StudentService {
 			// Save the student to the database
 			Student savedStudent = studentRepo.save(student);
 
-			return savedStudent.getId();
+			return savedStudent.getSid();
 	    } else {
 	        throw new StudentServiceException("Student already exists");
 	    }
@@ -88,6 +88,7 @@ public class StudentService {
 		else
 			throw new StudentServiceException("Email not found");
 	}
+	
 	
 	
 	

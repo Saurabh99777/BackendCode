@@ -1,5 +1,7 @@
 package com.abm.examedge.entity;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +19,7 @@ public class Result {
 	@Column(name="result_id")
 	private int id;
 	
-	private String level;
+	
 	
 	
 
@@ -30,7 +32,10 @@ public class Result {
 	private Student student;
 	
 	private int mark;
+	private String level;
 	
+	
+
 	
 
 	public int getId() {
@@ -74,7 +79,7 @@ public class Result {
 	public void setLevel(String level) {
 		this.level = level;
 	}
-	;
+	
 	
 	
 	
