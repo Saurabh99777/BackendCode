@@ -1,6 +1,7 @@
 package com.abm.examedge.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,12 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import com.abm.examedge.dto.StudentResultDto;
-
-import com.abm.examedge.dto.QuestionAnswerDto;
-
-import com.abm.examedge.dto.QuestionAnswerDto;
 import com.abm.examedge.dto.QuestionAnswerDto;
 import com.abm.examedge.entity.Result;
 import com.abm.examedge.exception.UserException;
@@ -57,18 +52,23 @@ public class ResultController {
 
 	
 	
-	@GetMapping("/studentresult")
-	public List<Result> fetchResultbyIdandLevel(int StudentId,int subid,String level,String mark){
-		List<Result> list= reservice.resultFetchByIdandLevel(StudentId,subid,level, mark);
-		return list;
-		
-
-
-
-
-	}
+//	@GetMapping("/studentresult")
+//	public List<Result> fetchResultbyIdandLevel(int StudentId,int subid,String level,String mark){
+//		List<Result> list= reservice.resultFetchByIdandLevel(StudentId,subid,level, mark);
+//		return list;
+//		
+	//}
 
 	
-
+	
+//	@GetMapping("/passOrFail")
+//    public List<PassFailResponse> getPassFailResults() {
+//        return reservice.getPassFailResults();
+//    }
+	
+	@GetMapping("/passFailCount")
+    public Map<String, Long> getPassFailCount() {
+        return reservice.getPassFailCount();
+    }
 	}
 

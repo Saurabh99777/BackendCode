@@ -1,12 +1,10 @@
 package com.abm.examedge.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
-import com.abm.examedge.dto.StudentResultDto;
 
 import com.abm.examedge.entity.Result;
 import com.abm.examedge.exception.UserException;
@@ -36,17 +34,23 @@ public class ResultService {
 	}
 	
 
-	public List<Result> resultFetchByIdandLevel(int StudentId,int subid,String level,String mark){
-		List<Result> list =resultRepo.ftechresultbyidandlevel(StudentId, subid, level, mark);
-		return list;
-		
-	}
+//	public List<Result> resultFetchByIdandLevel(int StudentId,int subid,String level,String mark){
+//		List<Result> list =resultRepo.ftechresultbyidandlevel(StudentId, subid, level, mark);
+//		return list;
+//		
+//	}
 	
 
 	public Result saveresult(Result result) {
 		return resultRepo.save(result);
 	}
-
+	
+	
+	
+	public Map<String, Long> getPassFailCount() {
+        return resultRepo.getPassFailCount();
+    }
+    
 	
 	
 }
