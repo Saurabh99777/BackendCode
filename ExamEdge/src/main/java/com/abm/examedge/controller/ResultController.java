@@ -49,10 +49,26 @@ public class ResultController {
 
 	
 	
-	@GetMapping("/studentresult")
-	public List<Result> fetchResultbyIdandLevel(int StudentId,int subid,String level,String mark){
-		List<Result> list= reservice.resultFetchByIdandLevel(StudentId,subid,level, mark);
-		return list;
+//	@GetMapping("/studentresult")
+//	public List<Result> fetchResultbyIdandLevel(int StudentId,int subid,String level,String mark){
+//		List<Result> list= reservice.resultFetchByIdandLevel(StudentId,subid,level, mark);
+//		return list;
+//
+//	}
+	
+	@GetMapping("/leaderboard")
+	public List<ResultDto> leaderboard(){
+		List<Object[]> results = reservice.fetchMarks();
+		List<ResultDto> rdto = new ArrayList<>();
+		ResultDto redto = new ResultDto();
+//		for(Object[] lb : results) {
+//			redto.setName(lb.getStudent().getName());
+//			redto.setMark(lb.getMark());
+//			rdto.add(redto);
+//		}
+		return rdto;
+	}
+	
 
 	}
 
