@@ -1,5 +1,6 @@
 package com.abm.examedge.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import com.abm.examedge.dto.StudentResultDto;
-
 import com.abm.examedge.dto.QuestionAnswerDto;
-
-import com.abm.examedge.dto.QuestionAnswerDto;
-import com.abm.examedge.dto.QuestionAnswerDto;
+import com.abm.examedge.dto.ResultDto;
 import com.abm.examedge.entity.Result;
 import com.abm.examedge.exception.UserException;
 import com.abm.examedge.service.ResultService;
@@ -38,10 +34,6 @@ public class ResultController {
 
 			return null;
 		}
-
-
-
-
 	}
 
 	@PostMapping("/result")
@@ -61,14 +53,6 @@ public class ResultController {
 	public List<Result> fetchResultbyIdandLevel(int StudentId,int subid,String level,String mark){
 		List<Result> list= reservice.resultFetchByIdandLevel(StudentId,subid,level, mark);
 		return list;
-		
-
-
-
-
-	}
-
-	
 
 	}
 
