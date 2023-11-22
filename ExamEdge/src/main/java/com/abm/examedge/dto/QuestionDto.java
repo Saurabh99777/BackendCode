@@ -15,6 +15,14 @@ public class QuestionDto {
 	private String uanswer; 
 	private String level;
 	
+	private String answer;
+	
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
 	
 	public int getQuestionId() {
 		return questionId;

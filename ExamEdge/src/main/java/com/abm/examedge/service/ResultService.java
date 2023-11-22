@@ -19,12 +19,11 @@ public class ResultService {
 	@Autowired 
 	private ResultRepository resultRepo;
 	
-//	public List<ResultEntity> results(@RequestParam int id, String level){
-//		List<ResultEntity> list =resultRepo.findResultsBySubjectIdAndLevel(id , level );
-//		return list;
-//		
-//		
-//	} 
+	//fetching result by st_id and mark
+	public List<Result> results(int id, int mark){
+		List<Result> list =resultRepo.findResultsBystIdandMark(id, mark);
+	return list;
+		} 
 	
 	public List<Result>showresult(int subid){
 		List<Result> list = resultRepo.resultfetch(subid);
@@ -36,11 +35,11 @@ public class ResultService {
 	}
 	
 
-	public List<Result> resultFetchByIdandLevel(int StudentId,int subid,String level,String mark){
+	/*public List<Result> resultFetchByIdandLevel(int StudentId,int subid,String level,String mark){
 		List<Result> list =resultRepo.ftechresultbyidandlevel(StudentId, subid, level, mark);
 		return list;
 		
-	}
+	}*/
 	
 
 	public Result saveresult(Result result) {

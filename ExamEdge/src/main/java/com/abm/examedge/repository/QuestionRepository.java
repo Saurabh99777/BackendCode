@@ -12,13 +12,15 @@ import com.abm.examedge.entity.Question;
 
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
 		
+
+
+	@Query(value = "SELECT q FROM Question q WHERE q.subject.id= ?1 AND q.level = ?2")
+	 public List<Question> questionfecth(int id, String level);
 	
 
-//	@Query(value = "SELECT q FROM Question q WHERE q.subject.id <> ?1 AND q.level = ?2 ORDER BY RAND() ")
-//	 public List<Question> questionfecth(@Param("subId")int id,@Param("level") String level);
-
-	@Query(value = "SELECT q FROM Question q WHERE q.subject.id= ?1 AND q.level = 'Basic'")
-	 public List<Question> questionfecth(int id);
+	//fetch question by subId
+	@Query(value = "SELECT q FROM Question q WHERE q.subject.id= ?1 and q.status is NULL ")
+	 public List<Question> questionfecthsubId(int id);
 	
 	//@Query("SELECT q FROM Question q WHERE q.subject.id = :id AND q.level = :level")
 	
@@ -26,7 +28,7 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
 //	@Query("SELECT q FROM Question q WHERE q.subject.id = ?1 and q.level='?2'")
 //	public List<Question> questionFetch(@Param("subjectId") int subjectId);
 
-	@Query("SELECT s FROM Question s WHERE s.subject.id=?1")
+	@Query("SELECT s FROM Question s WHERE s.subject.id = ?1 ")
 	public List<Question> fetchQuestionBySubid(int id);
 	
 	@Query("select q from Question q")

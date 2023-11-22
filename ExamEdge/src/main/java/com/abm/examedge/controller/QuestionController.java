@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.abm.examedge.dto.DeleteQuestion;
 import com.abm.examedge.dto.QuestionDto;
 import com.abm.examedge.dto.SubjectDto;
 import com.abm.examedge.entity.Question;
@@ -37,21 +38,29 @@ public class QuestionController {
         return "Added question successfully";
     }
 	
-//	@GetMapping("/fetchquestions")
-//	public List<Question> fetchques(@RequestParam int id,String level) {
-//		List<Question>list= questionser.questionfetch(id, level);
-//		return list;
-//	}
+	//fetch question by subjectid and level
+	@GetMapping("/fetchquestions")
+	public List<Question> fetchques(@RequestParam int id,@RequestParam String level) {
+		List<Question>list= questionser.questionfetch(id, level);
+		return list;
+	}
 	
 
+	//fetch question by subId
+	@GetMapping("/fetchquestions/subId")
+	public List<Question> fetchquestionid(@RequestParam int id) {
+		List<Question>list= questionser.questionfetchsubId(id);
+		return list;
+	}
 	
-//	@GetMapping("/fetchquesbyid/{id}")
-//	public ResponseEntity<Question> fetchbyid(@PathVariable int questionId) {
-//		
-//		return questionser.fetchquestionbyid(questionId);
-//		
-//		
-//	}
+	
+	@GetMapping("/fetchquesbyid/{id}")
+	public List<Question> fetchbyid(@PathVariable int questionId) {
+		
+		return questionser.fetchquestionbyid(questionId);
+		
+		
+	}
 	
 	@GetMapping("/fetchallquestion")
 	public List<Question> fetchquestion(){
@@ -61,6 +70,8 @@ public class QuestionController {
 	}
 
 	
+	
+	// this method fetch question for exam based on subject id
 	@GetMapping("/fetchquestionsbysubid")
 	public List<QuestionDto> fetchQuestionSubId(@RequestParam int id){
 		List<Question>list =questionser.fetchquestionbyid(id);
@@ -97,5 +108,39 @@ public class QuestionController {
 	 return "Deleted successfully";
 		
 	}
+	
+	//deleting question and status update
+	@GetMapping("/questionstatus")
+	public DeleteQuestion stauts(@RequestParam int questionId) {
+		questionser.questioncancel(questionId);
+		DeleteQuestion delete=new DeleteQuestion();
+		delete.setQuestionId(questionId);
+		delete.setStatus(true);
+		delete.setMessageIfAny("cancel question sucessfully");
+		return delete;
+	}
+	
+	@PostMapping("/update/question")
+	public QuestionDto updatequestion(@RequestBody QuestionDto questiondto, int id ) {
+		Question question = new Question();
+		
+		
+		questiondto.setQuestion(question.getQuestion());
+		questiondto.setOption1(question.getOption1());
+		questiondto.setOption2(question.getOption2());
+		questiondto.setOption3(question.getOption3());
+		questiondto.setOption4(question.getOption4());
+		questiondto.setAnswer(question.getAnswer());
+		questiondto.setLevel(question.getLevel());
+		
+		questionser.questionupdate(question);
+	
+		return questiondto;
+		
+	}
+	
+	
+	
+	
 	
 }

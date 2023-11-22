@@ -57,18 +57,19 @@ public class ResultController {
 
 	
 	
-	@GetMapping("/studentresult")
+	/*@GetMapping("/studentresult")
 	public List<Result> fetchResultbyIdandLevel(int StudentId,int subid,String level,String mark){
 		List<Result> list= reservice.resultFetchByIdandLevel(StudentId,subid,level, mark);
 		return list;
 		
+	}*/
 
-
-
-
+	//fetching result by st_id and mark
+	@GetMapping("/resultByStId/mark")
+	public List<Result> fetchResultbysubIdandLevel(@RequestParam int id,@RequestParam int mark){
+		List<Result>list= reservice.results(id, mark);
+		return list;
 	}
-
-	
 
 	}
 
