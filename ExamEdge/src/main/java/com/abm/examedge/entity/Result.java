@@ -18,11 +18,6 @@ public class Result {
 	@GeneratedValue
 	@Column(name="result_id")
 	private int id;
-	
-	
-	
-	
-
 	@ManyToOne
 	@JoinColumn(name="subject_id")
 	private Subject subject;

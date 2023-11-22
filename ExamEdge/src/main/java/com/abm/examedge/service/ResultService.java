@@ -44,13 +44,25 @@ public class ResultService {
 	public Result saveresult(Result result) {
 		return resultRepo.save(result);
 	}
+
 	
 	
 	
 	public Map<String, Long> getPassFailCount() {
         return resultRepo.getPassFailCount();
     }
-    
+
+
+	public List<Object[]> fetchMarks(){
+		List<Object[]> result = resultRepo.fetchResulyByMark();
+		
+//		for(Object[] lb : result)
+//			System.out.println(lb[0] + " " + lb[1]);
+		
+		return result;
+	}
+
 	
+
 	
 }

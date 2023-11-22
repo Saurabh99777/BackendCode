@@ -98,4 +98,39 @@ public class QuestionController {
 		
 	}
 	
+	
+	//deleting question and status update
+	@GetMapping("/questionstatus")
+	public DeleteQuestion stauts(@RequestParam int questionId) {
+		questionser.questioncancel(questionId);
+		DeleteQuestion delete=new DeleteQuestion();
+		delete.setQuestionId(questionId);
+		delete.setStatus(true);
+		delete.setMessageIfAny("cancel question sucessfully");
+		return delete;
+	}
+	
+	@PostMapping("/update/question")
+	public QuestionDto updatequestion(@RequestBody QuestionDto questiondto, int id ) {
+		Question question = new Question();
+		
+		
+		questiondto.setQuestion(question.getQuestion());
+		questiondto.setOption1(question.getOption1());
+		questiondto.setOption2(question.getOption2());
+		questiondto.setOption3(question.getOption3());
+		questiondto.setOption4(question.getOption4());
+		questiondto.setAnswer(question.getAnswer());
+		questiondto.setLevel(question.getLevel());
+		
+		questionser.questionupdate(question);
+	
+		return questiondto;
+		
+	}
+	
+	
+	
+	
+	
 }

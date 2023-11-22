@@ -29,7 +29,14 @@ public class Question {
 	private String option4;
 	private String answer; 
 	private String level;
+	private String status;
 	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public int getQuestionId() {
 		return questionId;
 	}

@@ -1,5 +1,6 @@
 package com.abm.examedge.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abm.examedge.dto.QuestionAnswerDto;
+
+import com.abm.examedge.dto.ResultDto;
+
 import com.abm.examedge.entity.Result;
 import com.abm.examedge.exception.UserException;
 import com.abm.examedge.service.ResultService;
@@ -33,10 +37,6 @@ public class ResultController {
 
 			return null;
 		}
-
-
-
-
 	}
 
 	@PostMapping("/result")
@@ -56,8 +56,26 @@ public class ResultController {
 //	public List<Result> fetchResultbyIdandLevel(int StudentId,int subid,String level,String mark){
 //		List<Result> list= reservice.resultFetchByIdandLevel(StudentId,subid,level, mark);
 //		return list;
+
 //		
 	//}
+
+
+//
+//	}
+	
+	@GetMapping("/leaderboard")
+	public List<ResultDto> leaderboard(){
+		List<Object[]> results = reservice.fetchMarks();
+		List<ResultDto> rdto = new ArrayList<>();
+		ResultDto redto = new ResultDto();
+//		for(Object[] lb : results) {
+//			redto.setName(lb.getStudent().getName());
+//			redto.setMark(lb.getMark());
+//			rdto.add(redto);
+//		}
+		return rdto;
+	}
 
 	
 	

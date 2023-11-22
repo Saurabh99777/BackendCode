@@ -82,13 +82,14 @@ public class StudentController {
 	}
 
 
-	@PostMapping("student/update/record/{id}")
-	public String update(@RequestBody Student stu) {
-		studentService.updaterecord(stu);
-		return "Record updated";
-	}
+//	@PostMapping("student/update/record")
+//	public String update(@RequestBody Student stu, @RequestParam int sid) {
+//		Student student = studentService.editDetails(sid);
+//		studentService.updaterecord(stu);
+//		return "Record updated";
+//	}
 
-
+	
 
 	
 
