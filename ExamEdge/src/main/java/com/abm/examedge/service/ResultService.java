@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.abm.examedge.dto.StudentResultDto;
 
 import com.abm.examedge.entity.Result;
-import com.abm.examedge.exception.ResultException;
 import com.abm.examedge.exception.UserException;
 import com.abm.examedge.repository.ResultRepository;
 

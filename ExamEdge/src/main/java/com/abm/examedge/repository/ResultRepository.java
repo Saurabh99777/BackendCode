@@ -11,6 +11,10 @@ import com.abm.examedge.entity.Result;
 
 public interface ResultRepository extends JpaRepository<Result, Integer>{
 	
+	//fetching result by st_id and mark
+	@Query("SELECT r FROM Result r WHERE r.student.id = ?1 AND r.mark = ?2")
+   List<Result> findResultsBystIdandMark(int id,int mark);
+
 	
 //	@Query("SELECT r FROM ResultEntity r WHERE r.subject.id = :subjectId AND r.subject.level = :subjectLevel")
 //    List<ResultEntity> findResultsBySubjectIdAndLevel(@Param("subjectId") int subjectId, @Param("Level") String Level);

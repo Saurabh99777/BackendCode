@@ -18,6 +18,8 @@ public class QuestionService {
 	@Autowired 
 	private QuestionRepository questionRepo;
 	
+
+	
 	public void deleteQuestion(int id ) {
 		
 		questionRepo.deleteById(id);
@@ -29,11 +31,16 @@ public class QuestionService {
 	 
 	 
 	 //fetching questions by id and level 
-	public List<Question> questionfetch( int id){
-		List<Question>list= questionRepo.questionfecth(id);
+	public List<Question> questionfetch( int id,String level){
+		List<Question>list= questionRepo.questionfecth(id, level);
 		return list;
 	}
 	
+	//fetching question by subid
+	public List<Question> questionfetchsubId( int id){
+		List<Question>list= questionRepo.questionfecthsubId(id);
+		return list;
+	}
 	
 	public List<Question> fetchquestionbyid( int id) {
 		List<Question> list=questionRepo.fetchQuestionBySubid(id);
@@ -67,6 +74,23 @@ public class QuestionService {
 	    }
 	    return marks;
 	}
+	
+	//updating status of deleting question
+	public int questioncancel(int id) {
+		Question question=questionRepo.findById(id).get();
+		question.setStatus("cancel");
+		questionRepo.save(question);
+		return id;
+		
+	}
+	
+	
+	public Question questionupdate(Question question) {
+		questionRepo.save(question);
+		return question;
+				}
+	
+	
 	
 	
 	
