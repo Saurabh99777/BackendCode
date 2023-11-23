@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.abm.examedge.dto.QuestionAnswerDto;
 
 import com.abm.examedge.dto.ResultDto;
-
 import com.abm.examedge.entity.Result;
 import com.abm.examedge.exception.UserException;
 import com.abm.examedge.service.ResultService;
@@ -29,10 +28,19 @@ public class ResultController {
 	private ResultService reservice;
 
 	@GetMapping("/student/result")
-	public List<Result> fetchresult(@RequestParam int id){
+	public List<ReportDto> fetchresult(@RequestParam int sid){
 		try {
-			List<Result>list=reservice.showresult(id);
-			return list;
+			List<Object[]>list=reservice.showresult(sid);
+			List<ReportDto> rdto = new ArrayList<ReportDto>();
+			for(Object[] result: list) {
+				ReportDto redto = new ReportDto();
+				redto.setAttempts((Long) result[0]);
+				redto.setLevel((String) result[1]);
+				redto.setSubjectName((String) result[3]);
+				rdto.add(redto);	
+			}
+			return rdto;
+			
 		}catch (UserException e){
 
 			return null;
@@ -65,17 +73,16 @@ public class ResultController {
 //	}
 	
 	@GetMapping("/leaderboard")
-	public List<ResultDto> leaderboard(){
-		List<Object[]> results = reservice.fetchMarks();
-		List<ResultDto> rdto = new ArrayList<>();
-		ResultDto redto = new ResultDto();
-//		for(Object[] lb : results) {
-//			redto.setName(lb.getStudent().getName());
-//			redto.setMark(lb.getMark());
-//			rdto.add(redto);
-//		}
-		return rdto;
-	}
+    public List<ResultDto> leaderboard() {
+        List<Object[]> results = reservice.fetchMarks();
+        List<ResultDto> rdto = new ArrayList<>();
+
+        for (Object[] lb : results) {
+            ResultDto redto = new ResultDto();
+            redto.setName((String) lb[0]);
+            redto.setMark(((Number) lb[1]).longValue()); // Convert to Long
+            rdto.add(redto);
+        }
 
 	
 	
