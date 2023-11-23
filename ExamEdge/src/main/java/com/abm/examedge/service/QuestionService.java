@@ -36,14 +36,16 @@ public class QuestionService {
 		return list;
 	}
 	
-	//fetching question by subid
+	//fetching all question by subid
 	public List<Question> questionfetchsubId( int id){
 		List<Question>list= questionRepo.questionfecthsubId(id);
 		return list;
 	}
 	
+	
+	//fetch question by question_id
 	public List<Question> fetchquestionbyid( int id) {
-		List<Question> list=questionRepo.fetchQuestionBySubid(id);
+		List<Question> list=questionRepo.fetchQuestionByQuid(id);
 		
 		return list;
 	}
@@ -84,10 +86,10 @@ public class QuestionService {
 		
 	}
 	
-	
-	public Question questionupdate(Question question) {
+	//edit
+	public void questionupdate(Question question) {
 		questionRepo.save(question);
-		return question;
+		
 				}
 	
 	
