@@ -1,11 +1,10 @@
 package com.abm.examedge.dto;
 
-import com.abm.examedge.entity.Student;
-import com.abm.examedge.entity.Subject;
+
 
 public class ResultDto {
 	private String name;
-	private int mark;
+	private Long mark;
 
 	
 	public String getName() {
@@ -14,12 +13,14 @@ public class ResultDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getMark() {
+	public Long getMark() {
 		return mark;
 	}
-	public void setMark(int mark) {
+	public void setMark(Long mark) {
 		this.mark = mark;
 	}
+	
+	
 	
 	
 	

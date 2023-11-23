@@ -24,8 +24,8 @@ public class ResultService {
 //		
 //	} 
 	
-	public List<Result>showresult(int subid){
-		List<Result> list = resultRepo.resultfetch(subid);
+	public List<Object[]>showresult(int sid){
+		List<Object[]> list = resultRepo.resultfetch(sid);
 		if(list!=null) {
 			return list;
 		}

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abm.examedge.dto.QuestionAnswerDto;
-
+import com.abm.examedge.dto.ReportDto;
 import com.abm.examedge.dto.ResultDto;
 import com.abm.examedge.entity.Result;
 import com.abm.examedge.exception.UserException;
@@ -64,11 +64,6 @@ public class ResultController {
 //	public List<Result> fetchResultbyIdandLevel(int StudentId,int subid,String level,String mark){
 //		List<Result> list= reservice.resultFetchByIdandLevel(StudentId,subid,level, mark);
 //		return list;
-
-//		
-	//}
-
-
 //
 //	}
 	
@@ -77,23 +72,17 @@ public class ResultController {
         List<Object[]> results = reservice.fetchMarks();
         List<ResultDto> rdto = new ArrayList<>();
 
+
         for (Object[] lb : results) {
             ResultDto redto = new ResultDto();
             redto.setName((String) lb[0]);
             redto.setMark(((Number) lb[1]).longValue()); // Convert to Long
             rdto.add(redto);
         }
-
-	
-	
-//	@GetMapping("/passOrFail")
-//    public List<PassFailResponse> getPassFailResults() {
-//        return reservice.getPassFailResults();
-//    }
-	
-	@GetMapping("/passFailCount")
-    public Map<String, Long> getPassFailCount() {
-        return reservice.getPassFailCount();
+		
+        return rdto;
     }
+	
+
 	}
 
