@@ -1,12 +1,10 @@
 package com.abm.examedge.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
-import com.abm.examedge.dto.StudentResultDto;
 
 import com.abm.examedge.entity.Result;
 import com.abm.examedge.exception.UserException;
@@ -47,6 +45,14 @@ public class ResultService {
 		return resultRepo.save(result);
 	}
 
+	
+	
+	
+	public Map<String, Long> getPassFailCount() {
+        return resultRepo.getPassFailCount();
+    }
+
+
 	public List<Object[]> fetchMarks(){
 		List<Object[]> result = resultRepo.fetchResulyByMark();
 		
@@ -55,6 +61,7 @@ public class ResultService {
 		
 		return result;
 	}
+
 	
 
 	
