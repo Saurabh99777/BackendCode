@@ -2,6 +2,7 @@ package com.abm.examedge.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abm.examedge.dto.QuestionAnswerDto;
+
 import com.abm.examedge.dto.ResultDto;
+
 import com.abm.examedge.entity.Result;
 import com.abm.examedge.exception.UserException;
 import com.abm.examedge.service.ResultService;
@@ -53,6 +56,11 @@ public class ResultController {
 //	public List<Result> fetchResultbyIdandLevel(int StudentId,int subid,String level,String mark){
 //		List<Result> list= reservice.resultFetchByIdandLevel(StudentId,subid,level, mark);
 //		return list;
+
+//		
+	//}
+
+
 //
 //	}
 	
@@ -68,7 +76,17 @@ public class ResultController {
 //		}
 		return rdto;
 	}
-	
 
+	
+	
+//	@GetMapping("/passOrFail")
+//    public List<PassFailResponse> getPassFailResults() {
+//        return reservice.getPassFailResults();
+//    }
+	
+	@GetMapping("/passFailCount")
+    public Map<String, Long> getPassFailCount() {
+        return reservice.getPassFailCount();
+    }
 	}
 
