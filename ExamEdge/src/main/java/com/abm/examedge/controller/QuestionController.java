@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.abm.examedge.dto.DeleteQuestion;
 import com.abm.examedge.dto.QuestionDto;
 import com.abm.examedge.dto.SubjectDto;
 import com.abm.examedge.entity.Question;

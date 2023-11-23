@@ -18,9 +18,10 @@ public interface ResultRepository extends JpaRepository<Result, Integer>{
 	
 //	@Query("SELECT r FROM ResultEntity r WHERE r.subject.id = :subjectId AND r.subject.level = :subjectLevel")
 //    List<ResultEntity> findResultsBySubjectIdAndLevel(@Param("subjectId") int subjectId, @Param("Level") String Level);
-
-	@Query(value = "SELECT r FROM Result r WHERE r.subject.id = ?1")
-	public List<Result> resultfetch(@Param("id")int id);
+	
+	//query to fetch result of student with count of level
+	@Query("SELECT count(r.level) as attempts, r.level, r.subject.id, r.subject.name FROM Result r WHERE r.student.sid = ?1 group by r.level, r.subject.id, r.subject.name")
+	public List<Object[]> resultfetch(int sid);
 	
 	
 //	@Query("")
