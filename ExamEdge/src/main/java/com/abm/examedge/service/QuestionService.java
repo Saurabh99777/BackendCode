@@ -19,7 +19,7 @@ public class QuestionService {
 	private QuestionRepository questionRepo;
 	
 
-	
+	 
 	public void deleteQuestion(int id ) {
 		
 		questionRepo.deleteById(id);
@@ -93,8 +93,12 @@ public class QuestionService {
 				}
 	
 	
-	
-	
+	public  Optional<Question> fetchsingleQbyid( int id) {
+		return questionRepo.findById(id);
+		
+		
+	}
+
 	
 	
 }

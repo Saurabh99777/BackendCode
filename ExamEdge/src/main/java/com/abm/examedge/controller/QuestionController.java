@@ -2,7 +2,7 @@ package com.abm.examedge.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -44,6 +44,7 @@ public class QuestionController {
 	
 	
 	
+	//fetch questions base on level and subId
 	@GetMapping("/fetchquestions")
 	public List<Question> fetchques(@RequestParam int id,String level) {
 		List<Question>list= questionser.questionfetch(id, level);
@@ -136,6 +137,7 @@ public class QuestionController {
 	
 		return "Added question successfull";
 		
+		
 	}
 	
 	//fetching question by subId
@@ -145,7 +147,13 @@ public class QuestionController {
 		return list;
 	}
 	
-	
+	//fetch single question by questionId
+	@GetMapping("single/questionbyid")
+	public Optional<Question> fetchsingleQu(@RequestParam int id){
+		return questionser.fetchsingleQbyid(id);
+		
+		
+	}
 	
 	
 	
